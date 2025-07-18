@@ -7,4 +7,5 @@ export { default as ModalWrapper } from './modals/ModalWrapper';
 
 // UI Components
 export { default as AnimatedModalOverlay } from './AnimatedModalOverlay';
-export { default as CustomDropdown } from './CustomDropdown'; 
+export { default as CustomDropdown } from './CustomDropdown';
+export { default as DevModeIndicator } from './DevModeIndicator'; 

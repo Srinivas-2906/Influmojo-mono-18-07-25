@@ -31,6 +31,20 @@ interface AuthState {
   user: User | null;
 }
 
+// Mock user data for development
+const mockUser: User = {
+  id: 'dev-user-1',
+  name: 'Mohammed Azhar Uddin',
+  email: 'azhar@example.com',
+  phone: '+919948425492',
+  firstName: 'Mohammed',
+  lastName: 'Azhar Uddin',
+  profileImage: 'https://randomuser.me/api/portraits/men/1.jpg',
+  isVerified: true,
+  createdAt: new Date(),
+  updatedAt: new Date(),
+};
+
 const initialState: AuthState = {
   signupForm: {
     email: '',
@@ -42,8 +56,8 @@ const initialState: AuthState = {
   },
   isLoading: false,
   error: null,
-  isAuthenticated: false,
-  user: null,
+  isAuthenticated: true, // Set to true for development
+  user: mockUser, // Use mock user for development
 };
 
 

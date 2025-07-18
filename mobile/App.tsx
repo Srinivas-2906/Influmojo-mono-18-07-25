@@ -9,7 +9,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { registerRootComponent } from 'expo';
 import WelcomeScreen from './screens/WelcomeScreen';
 import UserRoleScreen from './screens/UserRoleScreen';
-import SignUpScreen from './screens/SignUpScreen';
+// import SignUpScreen from './screens/SignUpScreen'; // Skip SignUp screen
 import OtpVerificationScreen from './screens/OtpVerificationScreen';
 import MobileVerifiedScreen from './screens/MobileVerifiedScreen';
 import GoogleVerifiedScreen from './screens/GoogleVerifiedScreen';
@@ -18,9 +18,11 @@ import ProfileSetupScreen from './screens/ProfileSetupScreen';
 import Profile from './screens/Profile';
 import ProfileCompleteScreen from './screens/ProfileCompleteScreen';
 import CreatePackageScreen from './screens/CreatePackageScreen';
+import CreatePortfolioScreen from './screens/CreatePortfolioScreen';
+import DevSplashScreen from './screens/DevSplashScreen';
 import * as NavigationBar from 'expo-navigation-bar';
-import SplashScreen from './screens/SplashScreen';
 import { ENV } from './config/env';
+import { DevModeIndicator } from './components';
 
 
 
@@ -105,15 +107,17 @@ export default function App() {
       <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator 
-            initialRouteName="SplashScreen"
+            initialRouteName="DevSplash"
             screenOptions={{
               headerShown: false
             }}
           >
-            <Stack.Screen name="SplashScreen" component={SplashScreen} />
+            {/* Development splash screen */}
+            <Stack.Screen name="DevSplash" component={DevSplashScreen} />
+            {/* Full navigation flow (skipping SignUp) */}
             <Stack.Screen name="Welcome" component={WelcomeScreen} />
             <Stack.Screen name="UserRole" component={UserRoleScreen} />
-            <Stack.Screen name="SignUp" component={SignUpScreen} />
+            {/* SignUp screen skipped - goes directly to CreatorPreferences */}
             <Stack.Screen name="OtpVerification" component={OtpVerificationScreen} />
             <Stack.Screen name="MobileVerification" component={MobileVerifiedScreen} />
             <Stack.Screen name="GoogleVerification" component={GoogleVerifiedScreen} />
@@ -122,7 +126,9 @@ export default function App() {
             <Stack.Screen name="Profile" component={Profile} />
             <Stack.Screen name="ProfileComplete" component={ProfileCompleteScreen} />
             <Stack.Screen name="CreatePackage" component={CreatePackageScreen} />
+            <Stack.Screen name="CreatePortfolio" component={CreatePortfolioScreen} />
           </Stack.Navigator>
+          <DevModeIndicator />
         </NavigationContainer>
         <StatusBar style="auto" />
       </Provider>
